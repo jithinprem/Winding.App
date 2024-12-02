@@ -1,0 +1,31 @@
+<div class="modal-body">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off"
+        class="m-4">
+    <div class="mb-3">
+      <label for="email" class="form-label signin-label">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control signin-label" [ngClass]="{'is-invalid': submitted && loginForm.get('email')?.errors}">
+      <div *ngIf="submitted && loginForm.get('email')?.errors" class="invalid-feedback">
+        <span class="text-danger xs-font" *ngIf="loginForm.get('email')?.hasError('required')">Email is required</span>
+        <span class="text-danger xs-font" *ngIf="loginForm.get('email')?.hasError('email')">Email must be valid</span>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label signin-label">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && loginForm.get('password')?.errors}">
+      <div *ngIf="submitted && loginForm.get('password')?.errors" class="invalid-feedback">
+        <span class="text-danger xs-font" *ngIf="loginForm.get('password')?.hasError('required')">Password is required</span>
+        <span class="text-danger xs-font" *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 6 character</span>
+      </div>
+    </div>
+
+    <button type="submit" class="mt-5 btn btn-sm btn-dark w-100 rounded-pill">Sign In</button>
+
+    <div *ngIf="errorList.length" class="mt-2">
+      <div class="text-danger signin-label" *ngFor="let error of errorList">{{error}}</div>
+    </div>
+  </form>
+  <ngx-spinner bdColor="rgba(7,1,1,0.95)" size="small" type="ball-scale-multiple">
+    <p style="color: white">Signing in...</p>
+  </ngx-spinner>
+</div>

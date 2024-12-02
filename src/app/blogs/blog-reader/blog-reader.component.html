@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <!-- Blog Header Section -->
+  <div class="blog-header text-center mb-5">
+    <!-- Blog Title -->
+    <h1 class="blog-title fw-bold text-dark">{{blogTitle}}</h1>
+
+    <!-- Tags -->
+    <div class="blog-tags mt-3">
+      <span class="badge bg-secondary font-monospace text-white m-2" *ngFor="let tag of tags">
+        #{{" "}}{{ tag }}
+      </span>
+    </div>
+
+    <!-- Publication Date -->
+    <p class="text-muted mt-1 xs-font">Published {{" "}}{{ publishDate | date }}</p>
+    <p class="text-muted mt-1">{{"- "}}{{ author | titlecase }}</p>
+  </div>
+
+  <!-- Blog Content Section -->
+  <div class="blog-content">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <p class="card-text fs-5 lh-lg text-dark" [innerHTML]="blogContent | newLineToBr">
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Like Button -->
+  <ng-container *ngIf="showLikeIcon">
+    <div class="text-center mt-4">
+      <button
+        class="btn"
+        (click)="toggleLike()"
+        [ngClass]="{'text-danger': isLiked, 'text-muted': !isLiked}"
+      >
+        <i class="fa fa-heart fs-3"></i>
+      </button>
+    </div>
+  </ng-container>
+
+</div>

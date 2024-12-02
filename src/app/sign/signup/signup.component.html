@@ -1,0 +1,62 @@
+<ng-container *ngIf="!registrationSuccess else emailConfirm;">
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off"
+          class="m-4">
+      <div class="mb-3">
+        <label for="email" class="form-label signin-label">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control signin-label" [ngClass]="{'is-invalid': submitted && registerForm.get('email')?.errors}">
+        <div *ngIf="submitted && registerForm.get('email')?.errors" class="invalid-feedback">
+          <span class="text-danger xs-font" *ngIf="registerForm.get('email')?.hasError('required')">Email is required</span>
+          <span class="text-danger xs-font" *ngIf="registerForm.get('email')?.hasError('email')">Email must be valid</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="firstName" class="form-label signin-label">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control signin-label" [ngClass]="{'is-invalid': submitted && registerForm.get('firstName')?.errors}">
+        <div *ngIf="submitted && registerForm.get('firstName')?.errors" class="invalid-feedback">
+          <span class="text-danger xs-font" *ngIf="registerForm.get('firstName')?.hasError('required')">Email is required</span>
+          <span class="text-danger xs-font" *ngIf="registerForm.get('firstName')?.hasError('minlength')">First Name should be atleast 3 characters</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label signin-label">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control signin-label" [ngClass]="{'is-invalid': submitted && registerForm.get('lastName')?.errors}">
+        <div *ngIf="submitted && registerForm.get('lastName')?.errors" class="invalid-feedback">
+          <span class="text-danger xs-font" *ngIf="registerForm.get('lastName')?.hasError('required')">Email is required</span>
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="password" class="form-label signin-label">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && registerForm.get('password')?.errors}">
+        <div *ngIf="submitted && registerForm.get('password')?.errors" class="invalid-feedback">
+          <span class="text-danger xs-font" *ngIf="registerForm.get('password')?.hasError('required')">Password is required</span>
+          <span class="text-danger xs-font" *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 6 character</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label signin-label">Confirm Password</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{'is-invalid': submitted && registerForm.get('confirmPassword')?.errors}">
+        <div *ngIf="submitted && registerForm.get('confirmPassword')?.errors" class="invalid-feedback">
+          <span class="text-danger xs-font" *ngIf="registerForm.get('confirmPassword')?.hasError('required')">Confirm password is required</span>
+          <span class="text-danger xs-font" *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch')">Passwords must match</span>
+        </div>
+      </div>
+
+      <button type="submit" class="mt-5 btn btn-sm btn-dark w-100 rounded-pill">Sign Up</button>
+    </form>
+  </div>
+</ng-container>
+
+<ng-template #emailConfirm>
+  <div class="email-modal pt-2 text-center">
+    <div class="modal-body flex-row">
+      <div class="lead fs-6">please confirm email</div>
+      <div><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+    </div>
+  </div>
+</ng-template>

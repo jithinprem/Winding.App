@@ -1,0 +1,34 @@
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  cursor: pointer;
+  color: #343a40;
+}
+
+.card-title:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4em; /* Adjust as needed */
+}
+
+.text-xs {
+  font-size: 11px;
+}
+
+.modal-title{
+  font-size: 12px;
+  font-weight: bold;
+}

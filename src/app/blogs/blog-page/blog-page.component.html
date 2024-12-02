@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <!-- Title Input -->
+  <div class="form-group mb-4">
+    <input
+      type="text"
+      class="form-control title-input"
+      placeholder="Title..."
+      [(ngModel)]="blogTitle"
+    />
+  </div>
+
+  <div class="form-group mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <input
+        type="text"
+        class="form-control tag-input mb-2"
+        placeholder="Add #tags"
+        (keydown.enter)="addTag($event)"
+      />
+      <div>
+        <button class="btn btn-dark btn-sm px-4 rounded-pill" (click)="publishBlog()">publish</button>
+      </div>
+    </div>
+
+    <div class="tags-container">
+      <span class="tag" *ngFor="let tag of tags; let i = index">
+        <span class="badge bg-secondary text-white me-2" (click)="removeTag(i)">
+          #{{ ' ' + tag }} <span class="cross text-warning">×</span>
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <div class="form-group mb-4">
+    <div class="form-group mb-4">
+      <textarea
+        class="form-control content-area"
+        rows="1"
+        placeholder="Start writing your story..."
+        [(ngModel)]="blogContent"
+        (input)="autoResize($event)"
+      ></textarea>
+
+    </div>
+  </div>
+
+</div>

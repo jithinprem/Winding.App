@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <!-- Body -->
+  <div class="row mt-4">
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <div *ngFor="let blog of blogs" class="card mb-3">
+        <div class="card-body" (click)="openBlog(blog.blogId)">
+          <!-- Tags -->
+          <div class="d-flex flex-wrap mb-2">
+            <span
+              *ngFor="let tag of blog.tags"
+              class="badge bg-secondary text-white font-monospace m-2"
+              style="cursor: pointer;"
+            >
+              #{{" " + tag }}
+            </span>
+          </div>
+
+          <!-- Title and Content -->
+          <h3 class="card-title">{{ blog.title }}</h3>
+
+          <div class="d-flex justify-content-between">
+            <p class="card-text text-truncate text-sm" style="max-height: 3em;">
+              {{ blog.description }}...
+            </p>
+
+            <!-- Blog Details -->
+            <div class="d-flex justify-content-center">
+              <div>
+                <small class="px-3">&bull; {{blog.author | titlecase}}</small>
+                <i class="fa-solid fa-heart fs-6"></i> {{blog.likes}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

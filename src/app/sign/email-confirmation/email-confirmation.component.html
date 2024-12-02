@@ -1,0 +1,37 @@
+
+<div class="container-bg pt-5">
+<!--  <h3 class="text-center mb-4">Winding</h3>-->
+  <div class="verfiy-card">
+    <ng-container *ngIf="emailConfirmationStatus == EmailStatus.NotConfirmed">
+      <div class="card" style="width: 18rem; min-height: 300px">
+        <div class="card-body">
+          <h5 class="card-title text-center">Verifying email...</h5>
+          <div class="text-center pt-5"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="emailConfirmationStatus == EmailStatus.Confirmed">
+      <div class="card" style="width: 18rem; min-height: 300px">
+        <div class="card-body centre-vertically">
+          <h5 class="card-title text-center">Verified</h5>
+          <div class="fs-1 text-center mb-4"><i class="fa fa-check" aria-hidden="true"></i></div>
+          <button class="justify-content-center btn btn-sm btn-dark rounded-pill p-2 px-5" routerLink="/">go to login</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="emailConfirmationStatus == EmailStatus.Failed">
+      <div class="card" style="width: 18rem; min-height: 300px">
+        <div class="card-body centre-vertically">
+          <h5 class="card-title text-center">Verification Failed</h5>
+          <div class="fs-1 text-center mb-4"><i class="fa fa-times" aria-hidden="true"></i></div>
+          <p class="text-danger text-center xs-text">email verification failed for {{email}}</p>
+          <p class="text-center">try logging in to resend email!</p>
+          <button class="justify-content-center btn btn-sm btn-dark rounded-pill p-2 px-5" routerLink="/">go to login</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

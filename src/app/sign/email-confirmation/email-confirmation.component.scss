@@ -1,0 +1,27 @@
+.verfiy-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.centre-vertically {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.centre-horizontally {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container-bg {
+  height: 100vh;
+  width: 100wh;
+  background-color: #ebecc5;
+}
+
+.xs-text {
+  font-size: 12px;
+}
